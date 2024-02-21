@@ -1,0 +1,19 @@
+<div class="demo-button-container">
+  <button mat-raised-button (click)="addData()" class="demo-button">
+    Add data
+  </button>
+</div>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <ng-container *ngFor="let item of tableLayout" matColumnDef="{{ item.colKey }}">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="{{item.cusCssClass}} {{item.colKey}}">{{ item.label }}</th>
+      <td 
+        mat-cell 
+        *matCellDef="let row; let idx = index" 
+        class="{{item.cusCssClass}} {{item.colKey}}"
+      >{{row[item.colKey]}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="tableLayout"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableLayout;"></tr>
+</table>
