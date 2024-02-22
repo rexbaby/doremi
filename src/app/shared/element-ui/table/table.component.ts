@@ -1,6 +1,6 @@
-import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { TableLayout } from './table.model';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-table',
@@ -16,9 +16,11 @@ export class TableComponent implements OnChanges {
     {label: 'symbol', colKey: 'symbol', cusCssClass: ''},
   ];
   dataSource!: MatTableDataSource<PeriodicElementDTO>;
+  displayedColumns: string[] = [];
   // dataSource = [...ELEMENT_DATA];
   
   ngOnChanges(): void {
+    this.displayedColumns = this.tableLayout.map((item) => item.colKey);
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
   }
 
