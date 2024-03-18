@@ -1,13 +1,19 @@
+import { OrganizationComponent } from './organization.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrganizationComponent } from './organization.component';
-import { SharedElementUiModule } from 'src/app/shared/shared-element-ui.module';
+import { RegionDialogComponent } from './region-dialog/region-dialog.component';
+import { AgentListComponent } from './agent-list/agent-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedElementUiModule
+    SharedModule
   ],
-  declarations: [OrganizationComponent]
+  declarations: [
+    OrganizationComponent,
+    RegionDialogComponent,
+    AgentListComponent
+  ]
 })
 export class OrganizationModule { }

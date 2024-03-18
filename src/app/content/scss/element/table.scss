@@ -1,0 +1,29 @@
+.table-paginator {
+    &.mat-mdc-paginator {
+        background-color: blanchedalmond;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .mat-mdc-paginator-page-size {
+        display: none;
+    }
+    
+    .mat-mdc-paginator-container {
+        padding-right: 88px;
+    }
+}
+
+.page-size {
+    .mat-mdc-text-field-wrapper {
+        height: 44px;
+    }
+}
+
+.cus-table {
+    // TODO: table header 圓角
+    th>:first {
+        background-color: beige;
+        border: 1px solid;
+        border-radius: 10px 0 0 0;
+    }
+}

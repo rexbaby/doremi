@@ -1,19 +1,50 @@
-<div class="demo-button-container">
-  <button mat-raised-button (click)="addData()" class="demo-button">
-    Add data
-  </button>
+<div class="csu-table-action">
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+    <ng-template #contentTpl>
+        <ng-content></ng-content>
+    </ng-template>
 </div>
 
-<table mat-table matSort [dataSource]="dataSource" class="">
-  <ng-container *ngFor="let item of tableLayout" matColumnDef="{{ item.colKey }}">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="{{item.cusCssClass}} {{item.colKey}}">{{ item.label }}</th>
-      <td 
-        mat-cell 
-        *matCellDef="let row; let idx = index" 
-        class="{{item.cusCssClass}} {{item.colKey}}"
-      >{{row[item.colKey]}}</td>
-  </ng-container>
+<table mat-table matSort [dataSource]="dataSource" class="cus-table">
+    <ng-container *ngFor="let item of tableLayout" matColumnDef="{{ item.colKey }}">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="{{item.cusCssClass}} {{item.colKey}}">{{ item.label }}</th>
+        <td mat-cell 
+            *matCellDef="let row; let idx = index" 
+            class="{{item.cusCssClass}} {{item.colKey}}"
+            [ngSwitch]="item.colKey"
+        >
+            <ng-container *ngSwitchCase="'action'">
+                <ng-template
+                    [ngTemplateOutlet]="action"
+                    [ngTemplateOutletContext]="{$implicit: row, idx: idx}"
+                ></ng-template>
+            </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <ng-container *ngSwitchCase="['createDate']">
+                {{row[item.colKey] | date: 'yyyy-MM-dd'}}
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+                {{row[item.colKey]}}
+            </ng-container>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<div class="relative" [hidden]="!dataSource.data">
+    <mat-paginator 
+        #paginator
+        class="table-paginator"
+        (page)="handlePageEvent($event)"
+        [length]="dataSource.data.length"
+        [pageSize]="pageSizeCtl.value"
+    ></mat-paginator>
+
+    <mat-form-field class="page-size">
+        <mat-label>每頁筆數</mat-label>
+        <input matInput placeholder="Page Size" type="number" [formControl]="pageSizeCtl">
+    </mat-form-field>
+</div>

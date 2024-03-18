@@ -1,57 +1,48 @@
-import { Component, OnChanges } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, Input, OnChanges, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { TableLayout } from './table.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+    selector: 'app-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnChanges {
-  // @ViewChild(MatTable) table!: MatTable<PeriodicElementDTO>;
-  tableLayout: TableLayout[] = [
-    {label: 'position', colKey: 'position', cusCssClass: ''},
-    {label: 'name', colKey: 'name', cusCssClass: ''},
-    {label: 'weight', colKey: 'weight', cusCssClass: ''},
-    {label: 'symbol', colKey: 'symbol', cusCssClass: ''},
-  ];
-  dataSource!: MatTableDataSource<PeriodicElementDTO>;
-  displayedColumns: string[] = [];
-  // dataSource = [...ELEMENT_DATA];
-  
-  ngOnChanges(): void {
-    this.displayedColumns = this.tableLayout.map((item) => item.colKey);
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-  }
+export class TableComponent<T> implements OnChanges, AfterViewInit {
+    @ContentChild('action') action!: TemplateRef<any>;
+    @ViewChild('paginator') paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+    @Input() tableLayout: TableLayout[] = [];
+    @Input() data: T[] = [];
 
-  addData() {
-    // const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    // this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
-    // this.table.renderRows();
-  }
+    dataSource!: MatTableDataSource<T>;
+    displayedColumns: string[] = [];
 
-  removeData() {
-    // this.dataSource.pop();
-    // this.table.renderRows();
-  }
+    pageSizeCtl = new FormControl(5, [Validators.min(0)]);
+
+    pageEvent!: PageEvent;
+
+    ngOnChanges(): void {
+        this.displayedColumns = this.tableLayout.map((item) => item.colKey);
+
+        this.dataSource = new MatTableDataSource(this.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this.pageSizeCtl.valueChanges.subscribe((data) => {
+            this.paginator._changePageSize(data!);
+        })
+    }
+
+    ngAfterViewInit(): void {
+        // this.dataSource.paginator = this.paginator;
+        // this.dataSource.sort = this.sort;
+    }
+
+    handlePageEvent(e: PageEvent) {
+        this.pageEvent = e;
+        console.log(e)
+    }
 }
-
-export interface PeriodicElementDTO {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElementDTO[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];

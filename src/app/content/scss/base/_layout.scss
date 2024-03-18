@@ -6,6 +6,10 @@
     position: absolute;
 }
 
+.fixed {
+    position: fixed;
+}
+
 .t-8 {
     top: 8px;
 }
@@ -20,4 +24,94 @@
 
 .pd-24 {
     padding: 24px;
+}
+
+@for $w from 1 through 100 {
+    .w-#{$w} {
+        width: #{$w * 1%};
+    }
+
+    .min-w-#{$w} {
+        min-width: #{$w * 1%};
+    }
+}
+
+.d-fl {
+    display: flex;
+}
+
+.fl-column {
+    flex-direction: column;
+}
+
+.fl-row {
+    flex-direction: row;
+}
+
+.fl-w {
+    flex-wrap: wrap;
+}
+
+.fl-ai-b {
+    align-items: baseline;
+}
+
+.fl-ai-c {
+    align-items: center;
+}
+
+.fl-ai-fe {
+    align-items: flex-end;
+}
+
+.fl-ai-fs {
+    align-items: flex-start;
+}
+
+.fl-jc-fs {
+    justify-content: flex-start;
+}
+
+.fl-jc-c {
+    justify-content: center;
+}
+
+.fl-jc-e {
+    justify-content: end;
+}
+
+.fl-jc-fe {
+    justify-content: flex-end;
+}
+
+.fl-jc-sb {
+    justify-content: space-between;
+}
+
+.fl-jc-sa {
+    justify-content: space-around;
+}
+
+.fl-jc-se {
+    justify-content: space-evenly;
+}
+
+.fl-11a {
+    flex: 1 1 auto;
+}
+
+.fl-00a {
+    flex: 0 0 auto;
+}
+
+.ta-c {
+    text-align: center;
+}
+
+.ta-r {
+    text-align: right;
+}
+
+.ta-l {
+    text-align: left;
 }

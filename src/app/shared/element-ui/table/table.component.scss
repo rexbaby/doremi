@@ -1,11 +1,16 @@
-.demo-table {
+.cus-table {
     width: 100%;
+    border-radius: 10px 10px 0 0;
 }
 
-.demo-button-container {
-    padding-bottom: 16px;
+.csu-table-action {
+    width: 100%;
+    margin: 8px 0;
 }
 
-.demo-button+.demo-button {
-    margin-left: 8px;
+.page-size {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    width: 80px;
 }

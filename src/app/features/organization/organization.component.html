@@ -1,1 +1,33 @@
-<app-table></app-table>
+<app-table
+    [tableLayout]="tableLayout"
+    [data]="tableData"
+>
+    <div class="d-fl fl-jc-fe">
+        <button mat-raised-button (click)="add()">
+            新增
+        </button>
+    </div>
+
+    <ng-template #action let-row let-index="idx">
+        <div class="d-fl fl-jc-fs">
+            <button 
+                mat-flat-button
+                class="mg-r-12"
+                (click)="edit(index, row)"
+            >
+                編輯
+            </button>
+            <button 
+                mat-flat-button
+                class="mg-r-12"
+            >
+                區域查看
+            </button>
+            <button 
+                mat-flat-button
+            >
+                人員列表
+            </button>
+        </div>
+    </ng-template>
+</app-table>

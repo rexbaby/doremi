@@ -1,1 +1,14 @@
-@import './base/layout';
+// @use '@angular/material' as mat;
+// @use '~@angular/material/theming';
+@import './base/_fg-life-theme';
+// @include mat.core();
+// @include mat.core-theme($my-theme);
+
+// @import './base/_theme';
+@import './base/_layout';
+@import './base/space';
+
+@import './element/common.scss';
+@import './element/table.scss';
+@import './element/material.scss';
+@import './element/dialog.scss';

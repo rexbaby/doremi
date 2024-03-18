@@ -1,0 +1,12 @@
+.dialog-title {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:host::ng-deep {
+    .mat-mdc-dialog-container .mdc-dialog__surface {
+        padding: 12px;
+    }
+}

@@ -1,0 +1,30 @@
+.mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}
+
+.mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    height: 44px;
+}
+
+.mat-mdc-form-field-infix {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+    // padding: 10px 0;
+}
+
+/* Change the border focused color 
+https://blog.stackademic.com/how-to-customize-mat-form-field-border-color-in-angular-material-v-15-3397e9734957
+*/
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+    border-color: var(--color-primary) !important;
+}
+
+.mdc-text-field .mdc-text-field__input {
+    caret-color: var(--color-primary);
+}
