@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -62,7 +63,7 @@ import { MatListModule } from '@angular/material/list';
         MatSnackBarModule,
         MatTableModule,
         MatTabsModule,
-        BrowserModule,
+        CommonModule,
         FormsModule,
         MatToolbarModule,
         MatListModule,
@@ -122,7 +123,7 @@ import { MatListModule } from '@angular/material/list';
         MatSnackBarModule,
         MatTableModule,
         MatTabsModule,
-        BrowserModule,
+        CommonModule,
         FormsModule,
         MatToolbarModule,
         MatListModule,
