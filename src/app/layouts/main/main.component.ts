@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +18,7 @@ export class MainComponent implements OnInit {
 
 
   constructor(
+    private router: Router,
     private _formBuilder: FormBuilder,
   ) { }
 
@@ -27,5 +29,9 @@ export class MainComponent implements OnInit {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
+  goToOrganization(): void {
+    console.log(`%c 回到首頁`, 'background-color: rgba(178, 135, 200, 0.8); color: black; font-size: 24px')
+    this.router.navigate(['/organization']);
+  }
 
 }
