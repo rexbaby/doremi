@@ -36,8 +36,8 @@ export class RegionDialogComponent implements OnInit {
         }
 
         const doAction = this.regionData.region?.id ?
-            this.deptService.modifyDept(this.regionData.region!.id, this.regionCtl.value!)
-            : this.deptService.addDept(this.regionCtl.value!);
+            this.deptService.modifyRegion(this.regionData.region!.id, this.regionCtl.value!)
+            : this.deptService.addRegion(this.regionCtl.value!);
 
         doAction.subscribe((res) => {
             this.close(res);
