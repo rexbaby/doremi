@@ -2,6 +2,29 @@
     display: none;
 }
 
+.mat-mdc-form-field {
+    width: 200px;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+    font-size: 16px;
+    padding-top: 12px;
+    padding-bottom: 14px;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    width: 44px !important;
+    height: 44px !important;
+}
+
 .mat-mdc-form-field .mat-mdc-text-field-wrapper {
     height: 44px;
 }
