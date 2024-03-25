@@ -20,7 +20,7 @@
                 ></ng-template>
             </ng-container>
 
-            <ng-container *ngSwitchCase="['createDate']">
+            <ng-container *ngSwitchCase="item.colKey === 'createDate' || item.colKey === 'boardingDate' ? item.colKey: ''">
                 {{row[item.colKey] | date: 'yyyy-MM-dd'}}
             </ng-container>
 
