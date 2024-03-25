@@ -9,6 +9,7 @@ import { SharedMaterialModule } from './shared/shared-material.module';
 import { ErrorComponent } from './layouts/error/error.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrganizationModule } from './features/organization/organization.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [			
@@ -18,6 +19,7 @@ import { OrganizationModule } from './features/organization/organization.module'
     ErrorComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

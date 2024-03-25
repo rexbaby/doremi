@@ -1,0 +1,79 @@
+<app-dialog-template [title]="dialogStateName[agentData.state]">
+    <form content [formGroup]="agentForm">
+        <div class="form-col">
+            <div class="label">區域</div>
+            <mat-form-field class="relative">
+                <input matInput type="text" formControlName="region" readonly>
+            </mat-form-field>
+        </div>
+
+        <div class="form-col">
+            <div class="label">通訊處</div>
+            <mat-form-field class="relative">
+                <mat-select  type="text" formControlName="deptCode">
+                    <mat-option *ngFor="let opt of deptOptions" [value]="opt">{{ opt }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-col">
+            <div class="label">姓名</div>
+            <mat-form-field class="relative">
+                <input matInput type="text" formControlName="name">
+                <div class="btn-clear">
+                    <button *ngIf="agentForm.get('name')?.value" matSuffix mat-icon-button
+                        (click)="agentForm.get('name')?.patchValue('')">
+                        <div>x</div>
+                    </button>
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-col">
+            <div class="label">性別</div>
+            <mat-form-field class="relative">
+                <mat-select  type="text" formControlName="deptCode">
+                    <mat-option *ngFor="let gender of genderOptions" [value]="gender.code">{{ gender.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-col">
+            <div class="label">電話</div>
+            <mat-form-field class="relative">
+                <input matInput type="text" formControlName="phone">
+                <div class="btn-clear">
+                    <button *ngIf="agentForm.get('phone')?.value" matSuffix mat-icon-button
+                        (click)="agentForm.get('phone')?.patchValue('')">x
+                    </button>
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-col">
+            <div class="label">入職日期</div>
+            <mat-form-field class="relative">
+                <input matInput type="text" formControlName="boardingDate" placeholder="yyyy-mm-dd">
+                <div class="btn-clear">
+                    <button *ngIf="agentForm.get('boardingDate')?.value" matSuffix mat-icon-button
+                        (click)="agentForm.get('boardingDate')?.patchValue('')">x
+                    </button>
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-col">
+            <div class="label">是否有效</div>
+            <mat-form-field class="relative">
+                <mat-select  type="text" formControlName="deptCode">
+                    <mat-option *ngFor="let status of statusOptions" [value]="status.code">{{ status.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div actions class="d-fl fl-jc-c">
+        <button mat-raised-button class="mg-r-8" matDialogClose>取消</button>
+        <button mat-raised-button>確定</button>
+    </div>
+</app-dialog-template>
