@@ -5,7 +5,7 @@ import { TableLayout } from 'src/app/shared/element-ui/table/table.model';
 import { GenderName } from 'src/app/shared/enum/gender.enum';
 import { StatusName } from 'src/app/shared/enum/status.enum';
 import { AgentDialogComponent } from '../agent-dialog/agent-dialog.component';
-import { AgentDTO, DeptService } from '../dept.service';
+import { AgentDTO, OrganizationService } from '../organization.service';
 import { AgentDialog, AngentsTableLayout, DIALOG_STATE } from '../organization.model';
 
 @Component({
@@ -25,7 +25,7 @@ export class AgentListComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private dialog: MatDialog,
-        private deptService: DeptService,
+        private organizationService: OrganizationService,
     ) {}
 
     ngOnInit() {
@@ -46,14 +46,14 @@ export class AgentListComponent implements OnInit {
     }
 
     getAgentListByRegion(): void {
-        this.deptService.getAgentList(this.regionId).subscribe((res) => {
+        this.organizationService.getAgentList(this.regionId).subscribe((res) => {
             this.tableData = res;
             this.oriData = res;
         })
     }
 
     getSubordinateAgents(): void {
-        this.deptService.getAgentList(this.deptId).subscribe((res) => {
+        this.organizationService.getAgentList(this.deptId).subscribe((res) => {
             this.tableData = res;
             this.oriData = res;
         })
