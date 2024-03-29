@@ -5,6 +5,19 @@
         </button>
     </div>
 
+    <ng-template #customBlock let-row let-item="item">
+        <ng-container [ngSwitch]="item.colKey">
+            
+            <ng-container *ngSwitchCase="'status'">
+                <div>{{ StatusName[row[item.colKey]] }}</div>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+                {{ row[item.colKey] }}
+            </ng-container>
+        </ng-container>
+    </ng-template>
+
     <ng-template #action let-row let-index="idx">
         <div class="d-fl fl-jc-fs">
             <button 

@@ -13,52 +13,124 @@ export class DeptService {
         { id: 4, region: '東部區域', createDate: new Date() },
     ];
 
-    mock_Agent_List_By_Region: AgentDTO[] = [
+    mock_All_Agent_List: AgentDTO[] = [
         {
             region: '北部地區',
             agentCode: 'A001',
             name: 'aaa',
             deptCode: '10010',
-            gender: 'male',
+            gender: 'MALE',
             phone: '09111222333',
             title: '業務員',
             boardingDate: new Date(),
-            status: '有效',
+            status: 'FAIL',
         },
         {
             region: '北部地區',
             agentCode: 'B001',
             name: 'bbb',
             deptCode: '99999',
-            gender: 'female',
+            gender: 'FEMALE',
             phone: '09111222333',
             title: '區經理',
             boardingDate: new Date(),
-            status: '有效',
+            status: 'AVAILABLE',
         },
         {
             region: '北部地區',
             agentCode: 'C001',
             name: 'ccc',
             deptCode: '10010',
-            gender: 'male',
+            gender: 'MALE',
             phone: '09111222333',
             title: '區經理',
             boardingDate: new Date(),
-            status: '有效',
+            status: 'AVAILABLE',
         },
         {
             region: '北部地區',
             agentCode: 'D001',
             name: 'ddd',
             deptCode: '10010',
-            gender: 'male',
+            gender: 'MALE',
             phone: '09111222333',
             title: '業務員',
             boardingDate: new Date(),
-            status: '有效',
+            status: 'FAIL',
         },
-    ]
+    ];
+
+    mock_Agent_List_By_Region: AgentDTO[] = [
+        {
+            region: '北部地區',
+            agentCode: 'A001',
+            name: 'aaa',
+            deptCode: '10010',
+            gender: 'MALE',
+            phone: '09111222333',
+            title: '業務員',
+            boardingDate: new Date(),
+            status: 'FAIL',
+        },
+        {
+            region: '北部地區',
+            agentCode: 'B001',
+            name: 'bbb',
+            deptCode: '99999',
+            gender: 'FEMALE',
+            phone: '09111222333',
+            title: '區經理',
+            boardingDate: new Date(),
+            status: 'AVAILABLE',
+        },
+        {
+            region: '北部地區',
+            agentCode: 'C001',
+            name: 'ccc',
+            deptCode: '10010',
+            gender: 'MALE',
+            phone: '09111222333',
+            title: '區經理',
+            boardingDate: new Date(),
+            status: 'AVAILABLE',
+        },
+        {
+            region: '北部地區',
+            agentCode: 'D001',
+            name: 'ddd',
+            deptCode: '10010',
+            gender: 'MALE',
+            phone: '09111222333',
+            title: '業務員',
+            boardingDate: new Date(),
+            status: 'FAIL',
+        },
+    ];
+    
+    mock_Agent_List_By_Person: AgentDTO[] = [
+        {
+            region: '北部地區',
+            agentCode: 'C001',
+            name: 'ccc',
+            deptCode: '10010',
+            gender: 'MALE',
+            phone: '09111222333',
+            title: '區經理',
+            boardingDate: new Date(),
+            status: 'AVAILABLE',
+        },
+        {
+            region: '北部地區',
+            agentCode: 'D001',
+            name: 'ddd',
+            deptCode: '10010',
+            gender: 'MALE',
+            phone: '09111222333',
+            title: '業務員',
+            boardingDate: new Date(),
+            status: 'FAIL',
+        },
+    ];
 
     constructor(
         // private http: HttpClient
@@ -93,8 +165,14 @@ export class DeptService {
         return of(fakeResult);
     }
 
-    getAgentList(deptId: number): Observable<AgentDTO[]> {
-        return of(this.mock_Agent_List_By_Region);
+    getAgentList(regionId?: number, agentId?: number): Observable<AgentDTO[]> {
+        if (regionId) {
+            return of(this.mock_Agent_List_By_Region);
+        }
+        if (agentId) {
+            return of(this.mock_Agent_List_By_Person);
+        }
+        return of(this.mock_All_Agent_List)
     }
 }
 

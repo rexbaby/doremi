@@ -63,10 +63,8 @@ export class RegionsComponent implements OnInit {
         });
     }
 
-    gotoAgentList(id: number): void {
-        // this.router.navigate(['/agent-list']);
-        this.router.navigate([`/organization/agent-list/${id}`]);
-        // this.router.navigate([`organizatioin/agent-list/${id}`]);
+    gotoAgentList(region: string, id: number): void {
+        this.router.navigate([`/organization/agent-list/${region}/${id}`]);
     }
 
     private getRegionList(): void {

@@ -10,7 +10,7 @@
         <div class="form-col">
             <div class="label">通訊處</div>
             <mat-form-field class="relative">
-                <mat-select  type="text" formControlName="deptCode">
+                <mat-select formControlName="deptCode">
                     <mat-option *ngFor="let opt of deptOptions" [value]="opt">{{ opt }}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -32,7 +32,7 @@
         <div class="form-col">
             <div class="label">性別</div>
             <mat-form-field class="relative">
-                <mat-select  type="text" formControlName="deptCode">
+                <mat-select formControlName="gender">
                     <mat-option *ngFor="let gender of genderOptions" [value]="gender.code">{{ gender.name }}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -53,9 +53,9 @@
         <div class="form-col">
             <div class="label">入職日期</div>
             <mat-form-field class="relative">
-                <input matInput type="text" formControlName="boardingDate" placeholder="yyyy-mm-dd">
+                <input matInput type="text" formControlName="boardingDate" placeholder="yyyy-mm-dd" [readonly]="agentData.state === 'edit'">
                 <div class="btn-clear">
-                    <button *ngIf="agentForm.get('boardingDate')?.value" matSuffix mat-icon-button
+                    <button *ngIf="!agentForm.get('boardingDate')?.value" matSuffix mat-icon-button
                         (click)="agentForm.get('boardingDate')?.patchValue('')">x
                     </button>
                 </div>
@@ -65,7 +65,7 @@
         <div class="form-col">
             <div class="label">是否有效</div>
             <mat-form-field class="relative">
-                <mat-select  type="text" formControlName="deptCode">
+                <mat-select formControlName="status">
                     <mat-option *ngFor="let status of statusOptions" [value]="status.code">{{ status.name }}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -74,6 +74,6 @@
 
     <div actions class="d-fl fl-jc-c">
         <button mat-raised-button class="mg-r-8" matDialogClose>取消</button>
-        <button mat-raised-button>確定</button>
+        <button mat-raised-button (click)="save()">確定</button>
     </div>
 </app-dialog-template>

@@ -13,11 +13,11 @@ export const ORGANIZATION_ROUTE: Route[] = [
                 component: RegionsComponent,
             },
             {
-                path: 'agent-list/:id',
+                path: 'agent-list/:region/:id',
                 component: AgentListComponent,
             },
             {
-                path: 'agent-list/subordinate',
+                path: 'agent-list/:region/subordinate/:id-sub',
                 component: AgentListComponent,
             },
         ],

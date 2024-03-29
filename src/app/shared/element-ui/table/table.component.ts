@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { FormControl, Validators } from '@angular/forms';
+import { GenderName } from '../../enum/gender.enum';
 
 @Component({
     selector: 'app-table',
@@ -12,6 +13,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class TableComponent<T> implements OnChanges, AfterViewInit {
     @ContentChild('action') action!: TemplateRef<any>;
+    @ContentChild('customBlock') customBlock!: TemplateRef<any>;
     @ViewChild('paginator') paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
     @Input() tableLayout: TableLayout[] = [];
@@ -44,5 +46,9 @@ export class TableComponent<T> implements OnChanges, AfterViewInit {
     handlePageEvent(e: PageEvent) {
         this.pageEvent = e;
         console.log(e)
+    }
+
+    get GenderName(): typeof GenderName {
+        return GenderName;
     }
 }

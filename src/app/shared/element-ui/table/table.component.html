@@ -20,12 +20,33 @@
                 ></ng-template>
             </ng-container>
 
+            <ng-container *ngSwitchCase="item.colKey === 'gender'">
+                {{ GenderName[row[item.colKey]] }}
+            </ng-container>
+
             <ng-container *ngSwitchCase="item.colKey === 'createDate' || item.colKey === 'boardingDate' ? item.colKey: ''">
-                {{row[item.colKey] | date: 'yyyy-MM-dd'}}
+                {{ row[item.colKey] | date: 'yyyy-MM-dd' }}
             </ng-container>
 
             <ng-container *ngSwitchDefault>
-                {{row[item.colKey]}}
+                <ng-container *ngIf="row[item.colKey] else dataNotFound" >
+
+                    <ng-container *ngIf="customBlock else basicBlock">
+                        <ng-template 
+                            [ngTemplateOutlet]="customBlock" 
+                            [ngTemplateOutletContext]="
+                                {$implicit: row, item: item, idx: idx}"
+                            >
+                        </ng-template>
+                    </ng-container>
+
+                    <ng-template #basicBlock>
+                        {{ row[item.colKey] }}
+                    </ng-template>
+
+                </ng-container>
+
+                <ng-template #dataNotFound>-</ng-template>
             </ng-container>
         </td>
     </ng-container>

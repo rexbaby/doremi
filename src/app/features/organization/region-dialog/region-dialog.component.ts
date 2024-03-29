@@ -14,8 +14,8 @@ export class RegionDialogComponent implements OnInit {
     id?: number;
 
     constructor(
-        public dialogRef: MatDialogRef<RegionDialogComponent>,
         private deptService: DeptService,
+        private dialogRef: MatDialogRef<RegionDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public regionData: RegionDialog,
     ) { }
 
