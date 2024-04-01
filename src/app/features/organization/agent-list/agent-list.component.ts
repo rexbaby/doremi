@@ -19,7 +19,7 @@ export class AgentListComponent implements OnInit {
     tableLayout: TableLayout[] = AngentsTableLayout;
     tableData: AgentDTO[] = [];
     oriData: AgentDTO[] = [];
-    region!: string;
+    workUnit!: string; // 工作單位 - 地區、通訊處
 
     constructor(
         private router: Router,
@@ -30,11 +30,10 @@ export class AgentListComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe((params) => {
-            this.region = params['region'];
+            this.workUnit = params['work-unit'];
             this.regionId = params['id']; // 沒有region id 代表是要查看轄下人員
-            this.region ? this.getAgentListByRegion() : undefined;
+            this.workUnit ? this.getAgentListByRegion() : undefined;
 
-            console.log(this.deptId)
             if (params['id-sub']) {
                 this.tableData = [];
                 this.oriData = [];
@@ -46,27 +45,27 @@ export class AgentListComponent implements OnInit {
     }
 
     getAgentListByRegion(): void {
-        this.organizationService.getAgentList(this.regionId).subscribe((res) => {
+        this.organizationService.getAgentList(this.regionId, 0).subscribe((res) => {
             this.tableData = res;
             this.oriData = res;
         })
     }
 
     getSubordinateAgents(): void {
-        this.organizationService.getAgentList(this.deptId).subscribe((res) => {
+        this.organizationService.getAgentList(0,this.deptId).subscribe((res) => {
             this.tableData = res;
             this.oriData = res;
         })
     }
 
     checkSubordinate(agentCode: string): void {
-        this.router.navigate([`organization/agent-list/${this.region}/subordinate/${agentCode}`])
+        this.router.navigate([`organization/agent-list/${this.workUnit}/subordinate/${agentCode}`])
     }
 
     add(): void {
         const dialogData: AgentDialog = {
             state: DIALOG_STATE.ADD,
-            region: this.region,
+            region: this.workUnit,
             agent: undefined
         }
         const dialogRef = this.dialog.open(AgentDialogComponent, {
@@ -84,7 +83,7 @@ export class AgentListComponent implements OnInit {
     edit(idx: number, item: AgentDTO): void {
         const dialogData: AgentDialog = {
             state: DIALOG_STATE.EDIT,
-            region: this.region,
+            region: this.workUnit,
             agent: item
         }
         const dialogRef = this.dialog.open(AgentDialogComponent, {

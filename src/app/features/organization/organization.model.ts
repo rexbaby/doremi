@@ -1,5 +1,5 @@
 import { TableLayout } from "src/app/shared/element-ui/table/table.model";
-import { AgentDTO, RegionDTO } from "./dept.service";
+import { AgentDTO, DeptDTO, RegionDTO } from "./organization.service";
 
 export const OrgTableLayout: TableLayout[] = [
     { label: '區域', colKey: 'region', cusCssClass: 'w-20' },
@@ -19,6 +19,16 @@ export const AngentsTableLayout: TableLayout[] = [
     { label: '動作', colKey: 'action', cusCssClass: 'w-15' },
 ];
 
+export const DeptTableLayout: TableLayout[] = [
+    { label: '處名稱', colKey: 'deptName', cusCssClass: 'w-10' },
+    { label: '處代號', colKey: 'deptCode', cusCssClass: 'w-10' },
+    { label: '地址', colKey: 'address', cusCssClass: 'w-25' },
+    { label: '電話', colKey: 'phone', cusCssClass: 'w-15' },
+    { label: '狀態', colKey: 'status', cusCssClass: 'w-8' },
+    { label: '創建時間', colKey: 'createDate', cusCssClass: 'w-12' },
+    { label: '動作', colKey: 'action', cusCssClass: 'w-20' },
+];
+
 export interface RegionDialog {
     state: string;
     region: RegionDTO | undefined;
@@ -29,7 +39,12 @@ export interface AgentDialog {
     region: string;
     agent: AgentDTO | undefined;
 } 
-// export type AgentDialog = Pick<AgentDTO, "region" | "deptCode" | "name" | "gender" | "phone" | "boardingDate" | "status">;
+
+export interface DeptDialog {
+    state: string;
+    region: string;
+    dept: DeptDTO | undefined;
+} 
 
 export enum DIALOG_STATE {
     EDIT = 'edit',

@@ -3,10 +3,12 @@
         <div class="label">區域名稱</div>
         <mat-form-field class="relative d-fl fl-ai-c">
             <input matInput type="text" [formControl]="regionCtl">
-            <button *ngIf="regionCtl.value" matSuffix mat-icon-button aria-label="Clear"
-                (click)="regionCtl.patchValue('')" class="absolute r-0">
-                <mat-icon>X</mat-icon>
-            </button>
+            <div class="btn-clear">
+                <button *ngIf="regionCtl.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="regionCtl.patchValue('')">
+                    <div>x</div>
+                </button>
+            </div>
         </mat-form-field>
     </div>
 

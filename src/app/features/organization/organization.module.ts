@@ -8,6 +8,8 @@ import { ORGANIZATION_ROUTE } from './organization.route';
 import { RouterModule } from '@angular/router';
 import { RegionsComponent } from './regions/regions.component';
 import { AgentDialogComponent } from './agent-dialog/agent-dialog.component';
+import { RegionDeptComponent } from './region-dept/region-dept.component';
+import { DeptDialogComponent } from './dept-dialog/dept-dialog.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { AgentDialogComponent } from './agent-dialog/agent-dialog.component';
     RegionDialogComponent,
     AgentListComponent,
     AgentDialogComponent,
+    RegionDeptComponent,
+    DeptDialogComponent
   ]
 })
 export class OrganizationModule { }

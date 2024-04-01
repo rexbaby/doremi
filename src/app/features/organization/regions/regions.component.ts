@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TableLayout } from 'src/app/shared/element-ui/table/table.model';
-import { DeptService, RegionDTO } from '../dept.service';
+import { OrganizationService, RegionDTO } from '../organization.service';
 import { DIALOG_STATE, OrgTableLayout, RegionDialog } from '../organization.model';
 import { RegionDialogComponent } from '../region-dialog/region-dialog.component';
 
@@ -18,7 +18,7 @@ export class RegionsComponent implements OnInit {
 
     constructor(
         public dialog: MatDialog,
-        private deptService: DeptService,
+        private organizationService: OrganizationService,
         private router: Router
     ) {
         this.getRegionList();
@@ -63,12 +63,16 @@ export class RegionsComponent implements OnInit {
         });
     }
 
-    gotoAgentList(region: string, id: number): void {
-        this.router.navigate([`/organization/agent-list/${region}/${id}`]);
+    gotoCheckRegion(region: string, regionId: number): void {
+        this.router.navigate([`/organization/depts/${region}/${regionId}`]);
+    }
+
+    gotoAgentList(region: string, regionId: number): void {
+        this.router.navigate([`/organization/agent-list/${region}/${regionId}`]);
     }
 
     private getRegionList(): void {
-        this.deptService.getRegionList().subscribe((res) => {
+        this.organizationService.getRegionList().subscribe((res) => {
             this.tableData = res;
             this.oriData = this.tableData;
         })

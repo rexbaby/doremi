@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DeptService, RegionDTO } from '../dept.service';
+import { OrganizationService, RegionDTO } from '../organization.service';
 import { DialogStateName, DIALOG_STATE, RegionDialog } from '../organization.model';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegionDialogComponent implements OnInit {
     id?: number;
 
     constructor(
-        private deptService: DeptService,
+        private organizationService: OrganizationService,
         private dialogRef: MatDialogRef<RegionDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public regionData: RegionDialog,
     ) { }
@@ -36,8 +36,8 @@ export class RegionDialogComponent implements OnInit {
         }
 
         const doAction = this.regionData.region?.id ?
-            this.deptService.modifyRegion(this.regionData.region!.id, this.regionCtl.value!)
-            : this.deptService.addRegion(this.regionCtl.value!);
+            this.organizationService.modifyRegion(this.regionData.region!.id, this.regionCtl.value!)
+            : this.organizationService.addRegion(this.regionCtl.value!);
 
         doAction.subscribe((res) => {
             this.close(res);

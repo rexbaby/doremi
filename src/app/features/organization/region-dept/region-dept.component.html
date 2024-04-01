@@ -1,0 +1,35 @@
+<app-table [tableLayout]="tableLayout" [data]="tableData">
+  <div class="d-fl fl-jc-fe">
+      <button mat-raised-button (click)="add()">
+          新增
+      </button>
+  </div>
+
+  <ng-template #customBlock let-row let-item="item">
+      <ng-container [ngSwitch]="item.colKey">
+          
+          <ng-container *ngSwitchCase="'status'">
+              <div>{{ StatusName[row[item.colKey]] }}</div>
+          </ng-container>
+
+          <ng-container *ngSwitchDefault>
+              {{ row[item.colKey] }}
+          </ng-container>
+      </ng-container>
+  </ng-template>
+
+  <ng-template #action let-row let-index="idx">
+      <div class="d-fl fl-jc-fs">
+          <button 
+              mat-flat-button 
+              class="mg-r-12" 
+              (click)="edit(index, row)"
+          >
+              編輯
+          </button>
+          <button mat-flat-button (click)="gotoAgentList(row.deptCode)">
+              人員列表
+          </button>
+      </div>
+  </ng-template>
+</app-table>

@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class DeptService {
+export class OrganizationService {
     mock_region_data: RegionDTO[] = [
         { id: 1, region: '北部區域', createDate: new Date() },
         { id: 2, region: '中部區域', createDate: new Date() },
@@ -132,6 +132,45 @@ export class DeptService {
         },
     ];
 
+    mock_Dept_List: DeptDTO[] = [
+        {
+            id: 1,
+            deptName: '北部01',
+            deptCode: '10010',
+            address: 'OO市OO區OOO路XX號X樓',
+            phone: '02-xxxxxxxx',
+            status: 'AVAILABLE',
+            createDate: new Date(),
+        },
+        {
+            id: 2,
+            deptName: '北部02',
+            deptCode: '10011',
+            address: 'OO市OO區OOO路XX號X樓',
+            phone: '02-xxxxxxxx',
+            status: 'AVAILABLE',
+            createDate: new Date(),
+        },
+        {
+            id: 3,
+            deptName: '北部03',
+            deptCode: '10013',
+            address: 'OO市OO區OOO路XX號X樓',
+            phone: '02-xxxxxxxx',
+            status: 'AVAILABLE',
+            createDate: new Date(),
+        },
+        {
+            id: 4,
+            deptName: '北部04',
+            deptCode: '10014',
+            address: 'OO市OO區OOO路XX號X樓',
+            phone: '02-xxxxxxxx',
+            status: 'AVAILABLE',
+            createDate: new Date(),
+        },
+    ]
+
     constructor(
         // private http: HttpClient
     ) { }
@@ -165,7 +204,13 @@ export class DeptService {
         return of(fakeResult);
     }
 
-    getAgentList(regionId?: number, agentId?: number): Observable<AgentDTO[]> {
+    /**
+     * 取得人員列表
+     * @param regionId 
+     * @param agentId 
+     * @returns 
+     */
+    getAgentList(regionId: number, agentId: number): Observable<AgentDTO[]> {
         if (regionId) {
             return of(this.mock_Agent_List_By_Region);
         }
@@ -173,6 +218,26 @@ export class DeptService {
             return of(this.mock_Agent_List_By_Person);
         }
         return of(this.mock_All_Agent_List)
+    }
+
+    /**
+     * 新增業務員
+     * @param reqBody 
+     */
+    addAgent(reqBody: any): void {
+
+    }
+
+    /**
+     * 編輯業務員
+     * @param reqBody 
+     */
+    editAgent(reqBody: any): void {
+
+    }
+    
+    getDeptList(regionId: number): Observable<DeptDTO[]> {
+        return of(this.mock_Dept_List);
     }
 }
 
@@ -192,4 +257,14 @@ export interface AgentDTO {
     title: string;
     boardingDate: Date;
     status: string;
+}
+
+export interface DeptDTO {
+    id: number;
+    deptName: string;
+    deptCode: string;
+    address: string;
+    phone: string;
+    status: string;
+    createDate: Date;
 }

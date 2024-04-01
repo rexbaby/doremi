@@ -1,0 +1,74 @@
+<app-dialog-template [title]="dialogStateName[deptData.state]">
+  <form content [formGroup]="deptForm">
+      <div class="form-col">
+          <div class="label">區域</div>
+          <mat-form-field class="relative">
+              <input matInput type="text" formControlName="region" readonly>
+          </mat-form-field>
+      </div>
+
+      <div class="form-col">
+          <div class="label">名稱</div>
+          <mat-form-field class="relative">
+            <input matInput type="text" formControlName="deptName">
+            <div class="btn-clear">
+              <button *ngIf="deptForm.get('deptName')?.value" matSuffix mat-icon-button
+                  (click)="deptForm.get('deptName')?.patchValue('')">
+                  <div>x</div>
+              </button>
+          </div>
+          </mat-form-field>
+      </div>
+
+      <div class="form-col">
+          <div class="label">處代號</div>
+          <mat-form-field class="relative">
+            <input matInput type="text" formControlName="deptCode">
+            <div class="btn-clear">
+              <button *ngIf="deptForm.get('deptCode')?.value" matSuffix mat-icon-button
+                  (click)="deptForm.get('deptCode')?.patchValue('')">
+                  <div>x</div>
+              </button>
+          </div>
+          </mat-form-field>
+      </div>
+
+      <div class="form-col">
+          <div class="label">地址</div>
+          <mat-form-field class="relative">
+            <input matInput type="text" formControlName="address">
+            <div class="btn-clear">
+                <button *ngIf="deptForm.get('address')?.value" matSuffix mat-icon-button
+                    (click)="deptForm.get('address')?.patchValue('')">x
+                </button>
+            </div>
+          </mat-form-field>
+      </div>
+
+      <div class="form-col">
+          <div class="label">電話</div>
+          <mat-form-field class="relative">
+              <input matInput type="text" formControlName="phone">
+              <div class="btn-clear">
+                  <button *ngIf="deptForm.get('phone')?.value" matSuffix mat-icon-button
+                      (click)="deptForm.get('phone')?.patchValue('')">x
+                  </button>
+              </div>
+          </mat-form-field>
+      </div>
+
+      <div class="form-col">
+          <div class="label">是否有效</div>
+          <mat-form-field class="relative">
+              <mat-select formControlName="status">
+                  <mat-option *ngFor="let status of statusOptions" [value]="status.code">{{ status.name }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+  </form>
+
+  <div actions class="d-fl fl-jc-c">
+      <button mat-raised-button class="mg-r-8" matDialogClose>取消</button>
+      <button mat-raised-button (click)="save()">確定</button>
+  </div>
+</app-dialog-template>

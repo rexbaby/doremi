@@ -1,0 +1,17 @@
+.form-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+
+    .label {
+        margin-right: 8px;
+    }
+}
+
+// TODO: 不能編輯的樣式
+.disabled {
+    // &.mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    //     background-color: rgba(1, 1, 1, 0.3);
+    // }
+}
