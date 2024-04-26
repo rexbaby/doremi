@@ -15,7 +15,9 @@ export class MainComponent implements OnInit {
   });
   
   isSidebarOpen: boolean = false;
-
+  showParent1: boolean = true;
+  showParent2: boolean = false;
+  showParent3: boolean = false;
 
   constructor(
     private router: Router,
@@ -23,10 +25,23 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.router.navigate(['']); // 預設首頁顯示通訊處畫面
   }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  toggleParent1() {
+    this.showParent1 = !this.showParent1;
+  }
+
+  toggleParent2() {
+    this.showParent2 = !this.showParent2;
+  }
+
+  toggleParent3() {
+    this.showParent3 = !this.showParent3;
   }
 
   goToOrganization(): void {

@@ -10,6 +10,7 @@ import { RegionsComponent } from './regions/regions.component';
 import { AgentDialogComponent } from './agent-dialog/agent-dialog.component';
 import { RegionDeptComponent } from './region-dept/region-dept.component';
 import { DeptDialogComponent } from './dept-dialog/dept-dialog.component';
+import { OutworkerComponent } from './outworker/outworker.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { DeptDialogComponent } from './dept-dialog/dept-dialog.component';
     AgentListComponent,
     AgentDialogComponent,
     RegionDeptComponent,
-    DeptDialogComponent
+    DeptDialogComponent,
+    OutworkerComponent
   ]
 })
 export class OrganizationModule { }

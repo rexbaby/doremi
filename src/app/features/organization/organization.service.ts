@@ -210,7 +210,7 @@ export class OrganizationService {
      * @param agentId 
      * @returns 
      */
-    getAgentList(regionId: number, agentId: number): Observable<AgentDTO[]> {
+    getAgentList(regionId?: number, agentId?: number): Observable<AgentDTO[]> {
         if (regionId) {
             return of(this.mock_Agent_List_By_Region);
         }

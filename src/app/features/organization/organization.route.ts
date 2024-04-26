@@ -1,6 +1,7 @@
 import { Route } from "@angular/router";
 import { AgentListComponent } from "./agent-list/agent-list.component";
 import { OrganizationComponent } from "./organization.component";
+import { OutworkerComponent } from "./outworker/outworker.component";
 import { RegionDeptComponent } from "./region-dept/region-dept.component";
 import { RegionsComponent } from "./regions/regions.component";
 
@@ -24,6 +25,10 @@ export const ORGANIZATION_ROUTE: Route[] = [
             {
                 path: 'depts/:region/:id',
                 component: RegionDeptComponent,
+            },
+            {
+                path: 'outworker',
+                component: OutworkerComponent,
             },
         ],
     },

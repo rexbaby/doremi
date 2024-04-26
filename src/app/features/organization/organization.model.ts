@@ -29,6 +29,19 @@ export const DeptTableLayout: TableLayout[] = [
     { label: '動作', colKey: 'action', cusCssClass: 'w-20' },
 ];
 
+export const OutworkerTableLayout: TableLayout[] = [
+    { label: '姓名', colKey: 'name', cusCssClass: 'w-8' },
+    { label: '代號', colKey: 'agentCode', cusCssClass: 'w-8' },
+    { label: '區部', colKey: 'region', cusCssClass: 'w-8' },
+    { label: '處代號', colKey: 'deptCode', cusCssClass: 'w-8' },
+    { label: '性別', colKey: 'gender', cusCssClass: 'w-8' },
+    { label: '電話', colKey: 'phone', cusCssClass: 'w-10' },
+    { label: '職稱', colKey: 'title', cusCssClass: 'w-8' },
+    { label: '入職日期', colKey: 'boardingDate', cusCssClass: 'w-10' },
+    { label: '狀態', colKey: 'status', cusCssClass: 'w-7' },
+    { label: '動作', colKey: 'action', cusCssClass: 'w-15' },
+];
+
 export interface RegionDialog {
     state: string;
     region: RegionDTO | undefined;
@@ -36,7 +49,7 @@ export interface RegionDialog {
 
 export interface AgentDialog {
     state: string;
-    region: string;
+    region: string | undefined;
     agent: AgentDTO | undefined;
 } 
 

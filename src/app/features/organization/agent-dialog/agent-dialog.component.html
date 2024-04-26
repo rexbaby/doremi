@@ -3,7 +3,12 @@
         <div class="form-col">
             <div class="label">區域</div>
             <mat-form-field class="relative">
-                <input matInput type="text" formControlName="region" readonly>
+                <input matInput type="text" formControlName="region" readonly *ngIf="agentData.region">
+
+                <!-- 新增外勤人員時開放選擇 -->
+                <mat-select formControlName="region" *ngIf="!agentData.region">
+                    <mat-option *ngFor="let region of regionOptions" [value]="region">{{ region }}</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 

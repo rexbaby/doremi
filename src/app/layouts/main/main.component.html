@@ -21,9 +21,29 @@
         <button class="log-out">登出</button>
     </mat-toolbar>
 
-    <mat-sidenav-container class="example-container">
-        <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
-            Sidenav
+    <mat-sidenav-container class="container">
+        <mat-sidenav #sidenav mode="side" opened class="sidenav">
+            <mat-list-item class="nav-item-parent" (click)="toggleParent1()" routerLink="">
+                組織
+            </mat-list-item>
+            <mat-list-item *ngIf="showParent1">
+                <a mat-list-item routerLink="" class="nav-item-child">通訊處</a>
+                <a mat-list-item routerLink="/organization/outworker" class="nav-item-child">外勤人員</a>
+            </mat-list-item>
+            
+            <mat-list-item class="nav-item-parent" (click)="toggleParent2()">
+                打卡紀錄
+            </mat-list-item>
+            <mat-list-item *ngIf="showParent2">
+                <div class="nav-item-child">敬請期待</div>
+            </mat-list-item>
+                
+            <mat-list-item class="nav-item-parent" (click)="toggleParent3()">
+                帳號權限
+            </mat-list-item>
+            <mat-list-item *ngIf="showParent3">
+                <div class="nav-item-child">敬請期待</div>
+            </mat-list-item>
         </mat-sidenav>
 
         <mat-sidenav-content>

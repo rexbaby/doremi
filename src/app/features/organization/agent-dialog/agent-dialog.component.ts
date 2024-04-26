@@ -24,7 +24,8 @@ export class AgentDialogComponent implements OnInit {
         status: ['', Validators.required],
         title: ['', Validators.required],
     });
-    deptOptions: string[] = ['10010', '10011', '10012', '10013', '999999'];
+    regionOptions: string[] = ['北部區域', '南部區域', '中部區域', '東部區域']; // 打api
+    deptOptions: string[] = ['10010', '10011', '10012', '10013', '999999']; // 打api
     genderOptions: ViewOptionDTO[] = [{code: 'MALE', name: '男'}, {code: 'FEMALE', name: '女'}];
     statusOptions: ViewOptionDTO[] = [{code: 'FAIL', name: '失效'}, {code: 'AVAILABLE', name: '有效'}];
 
@@ -42,6 +43,8 @@ export class AgentDialogComponent implements OnInit {
             this.agentForm.patchValue(this.agentData.agent);
             const date = moment(this.agentForm.get('boardingDate')?.value).format('YYYY-MM-DD'); // 調整在Input顯示的值
             this.agentForm.get('boardingDate')?.patchValue(date);
+        } else if (this.agentData.state === DIALOG_STATE.ADD && !this.agentData.region) { // 新增外勤人員可編輯區域&通訊處
+            this.agentForm.get('title')?.patchValue('業務員')
         } else {
             this.agentForm.get('region')?.patchValue(this.agentData.region);
             this.agentForm.get('title')?.patchValue('業務員')

@@ -4,20 +4,44 @@
     border: 1px solid black;
 }
 
-.example-container {
+.container {
+    height: calc(100% - 60px);
     position: absolute;
     top: 60px;
-    bottom: 60px;
     left: 0;
     right: 0;
 }
 
-.example-sidenav {
+.sidenav {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 200px;
-    background: rgba(255, 0, 0, 0.5);
+    background: #e29e9e;
+}
+
+.nav-item-parent {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #e3bbbb;
+    }
+}
+
+.nav-item-child {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 5px 20px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #e3bbbb;
+    }
 }
 
 .example-header {
